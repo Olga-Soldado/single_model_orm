@@ -1,0 +1,38 @@
+python manage.py makemigrations
+
+python manage.py migrate
+
+python manage.py shell -i ipython
+
+from users_app.models import *
+
+1.-insertar 3 usuarios
+Alex = Users.objects.create(first_name="Alex",last_name="Astorga",email_address="alex@gmail.com",age=7)
+Olga = Users.objects.create(first_name="Olga",last_name="Soldado",email_address="olga@gmail.com",age=27)
+Fernando = Users.objects.create(first_name="Fernando",last_name="Muñoz",email_address="fernando@gmail.com",age=30)
+
+2.-recuperar datos de la tabla
+Users.objects.all()
+Users.objects.all().values()//valores de la tabla
+
+3.-ultimo elemento.
+Users.objects.last()
+
+4.primer elemento
+Users.objects.first()
+
+5.-cambiar datos user 3.
+cambio = Users.objects.get(id=3)
+cambio.last_name = "Pancakes"
+cambio.save()
+
+6.Elimina el user 2.
+elimina = Users.objects.get(id=2)
+elimina.delete()
+
+7.- ordena los user por su nombre
+Users.objects.order_by('first_name')
+
+8.- ordena los user por su nombre(descendiente)
+Users.objects.order_by('-first_name')
+
